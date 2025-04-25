@@ -1,0 +1,53 @@
+<mat-card class="signup-card">
+  <h2 mat-card-title>Create an Account</h2>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>User Name</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="f['username']?.errors?.['required']">
+        Username is required.
+      </mat-error>
+      <mat-error *ngIf="f['username']?.errors?.['minlength']">
+        Must be at least 4 characters.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+      <mat-error *ngIf="f['email']?.errors?.['required']">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="f['email']?.errors?.['email']">
+        Invalid email address.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+      <mat-error *ngIf="f['password']?.errors?.['required']">
+        Password is required.
+      </mat-error>
+      <mat-error *ngIf="f['password']?.errors?.['minlength']">
+        Must be at least 6 characters.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput formControlName="confirmPassword" type="password" />
+      <mat-error *ngIf="f['confirmPassword']?.errors?.['required']">
+        Confirm Password is required.
+      </mat-error>
+      <mat-error *ngIf="signupForm.errors?.['mismatch']">
+        Passwords do not match.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">
+      Sign Up
+    </button>
+  </form>
+</mat-card>

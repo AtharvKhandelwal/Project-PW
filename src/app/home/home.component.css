@@ -1,0 +1,38 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+}
+
+.card {
+  width: 300px;
+  padding: 40px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card1 {
+  background: linear-gradient(135deg, #ff6f61, #ff9472);
+}
+
+.card2 {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.card3 {
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+mat-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
