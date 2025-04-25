@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>PowerPoint to PDF Converter</span>
+</mat-toolbar>
+
+<mat-card class="converter-card">
+  <mat-card-content>
+    <h2>Upload PowerPoint File</h2>
+
+    <input type="file" accept=".ppt,.pptx" (change)="onFileSelected($event)" hidden #fileInput />
+    <button mat-raised-button color="accent" (click)="fileInput.click()">Choose File</button>
+    <span *ngIf="selectedFile" class="filename">{{ selectedFile.name }}</span>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" (click)="convertPptToPdf()" [disabled]="loading || !selectedFile">
+        {{ loading ? 'Converting...' : 'Convert to PDF' }}
+      </button>
+    </div>
+
+    <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+
+    <div *ngIf="convertedFileUrl" class="result">
+      <p>Conversion successful!</p>
+      <button mat-stroked-button color="primary" (click)="downloadConvertedFile()">Download PDF</button>
+    </div>
+  </mat-card-content>
+</mat-card>

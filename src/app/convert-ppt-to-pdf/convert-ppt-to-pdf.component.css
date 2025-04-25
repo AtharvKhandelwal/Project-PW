@@ -1,0 +1,27 @@
+.converter-card {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .filename {
+    display: block;
+    margin: 10px 0;
+    font-weight: 500;
+  }
+  
+  .actions {
+    margin-top: 20px;
+  }
+  
+  .result {
+    margin-top: 20px;
+  }
+  
+  mat-error {
+    color: #f44336;
+    margin-top: 10px;
+    display: block;
+  }
+  

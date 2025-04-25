@@ -1,0 +1,61 @@
+<!-- Header Section -->
+<header class="app-header">
+  <mat-toolbar class="nav" color="primary">
+
+    <!-- LEFT: Logo -->
+    <div class="logo">
+      <span>I</span>
+      <mat-icon color="accent">favorite</mat-icon>
+      <span>LovePdf</span>
+    </div>
+
+    <!-- FLEX SPACER (pushes next part to the right) -->
+    <span class="spacer"></span>
+
+    <!-- RIGHT: Nav buttons + logout -->
+    <div class="nav-right">
+      <a routerLink="/" class="nav-link" matTooltip="Home">
+        <mat-icon class="nav-icon">home</mat-icon>
+      </a>
+
+      <a routerLink="/signup" class="nav-link" matTooltip="Signup">
+        <mat-icon class="nav-icon">person_add</mat-icon>
+      </a>
+
+      <a routerLink="/login" class="nav-link" matTooltip="Login">
+        <mat-icon class="nav-icon">login</mat-icon>
+      </a>
+
+      <div *ngIf="username" class="welcome-text">
+        <span>Welcome, <strong>{{ username }}</strong>!</span>
+      </div>
+
+      <!-- Logout Button (only if logged in) -->
+ 
+      <!-- <button mat-button class="logout" color="warn" *ngIf="username" (click)="logoutFunction()">Logout</button> -->
+      <mat-icon 
+        *ngIf="username" class="nav-icon logout-icon" (click)="logoutFunction()" matTooltip="Logout" style="cursor: pointer; color: #f44336;">Logout
+      </mat-icon>
+    
+    </div>
+
+  </mat-toolbar>
+</header>
+
+<!-- Main Content Section -->
+<div class="app-container">
+  <main class="app-content">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="app-footer">
+    <mat-toolbar color="primary">
+      <div class="footer-content">
+        <p>&copy; 2025 I Love PDF. All rights reserved.</p>
+      </div>
+    </mat-toolbar>
+  </footer>
+</div>

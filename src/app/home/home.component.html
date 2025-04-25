@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>Document Converter Dashboard</span>
+</mat-toolbar>
+
+<div class="card-grid">
+  <mat-card class="card card1" (click)="navigateTo('pdftopowerpoint')">
+    <mat-icon>picture_as_pdf</mat-icon>
+    <h3>PDF to PowerPoint</h3>
+    <p>Convert PDF files to editable PowerPoint presentations.</p>
+  </mat-card>
+
+  <mat-card class="card card2" (click)="navigateTo('ppttopdf')">
+    <mat-icon>slideshow</mat-icon>
+    <h3>PowerPoint to PDF</h3>
+    <p>Convert your slides into a high-quality PDF.</p>
+  </mat-card>
+
+  <mat-card class="card card3" (click)="navigateTo('wordtopdf')">
+    <mat-icon>description</mat-icon>
+    <h3>Word to PDF</h3>
+    <p>Transform DOCX files into PDFs effortlessly.</p>
+  </mat-card>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Convert PDF to PowerPoint</h2>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <input type="file" (change)="onFileSelected($event)" accept=".pdf" />
+  
+    <button (click)="convertPdfToPpt()" [disabled]="!selectedFile || loading">
+      Convert to PPT
+    </button>
+  
+    <div *ngIf="loading" class="spinner">
+      <span>Converting...</span>
+    </div>
+  
+    <div *ngIf="convertedFileUrl">
+      <p>Your file is ready:</p>
+      <a [href]="convertedFileUrl" [download]="convertedFileName">{{ convertedFileName }}</a>
+    </div>
+  </div>
+  
