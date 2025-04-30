@@ -1,7 +1,8 @@
 <mat-card class="signup-card">
-  <h2 mat-card-title>Create an Account</h2>
+  <h2 mat-card-title class="signup-title">Create an Account</h2>
 
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Username Field -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>User Name</mat-label>
       <input matInput formControlName="username" />
@@ -13,6 +14,7 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Email Field -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" type="email" />
@@ -24,6 +26,7 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Password Field -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Password</mat-label>
       <input matInput formControlName="password" type="password" />
@@ -35,6 +38,7 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Confirm Password Field -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Confirm Password</mat-label>
       <input matInput formControlName="confirmPassword" type="password" />
@@ -46,8 +50,13 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" class="full-width submit-btn" type="submit" [disabled]="signupForm.invalid">
       Sign Up
     </button>
   </form>
+
+  <div class="footer-links">
+    <a routerLink="/login">Already have an account? Login</a>
+  </div>
 </mat-card>

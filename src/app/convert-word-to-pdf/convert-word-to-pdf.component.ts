@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { UserService } from '../user.service'; // Adjust path if different
+import { UserService } from '../../user.service'; // Adjust path if different
 
 @Component({
   selector: 'app-convert-word-to-pdf',

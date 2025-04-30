@@ -1,3 +1,30 @@
+.dashboard-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #610a89, #36ad8f);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 30px 20px;
+  height: 200px;
+  width: 81%;
+  /* max-width: 1200px; */
+  margin: 2% auto 40px auto;
+  border-radius: 5px 5px 20px 20px;
+}
+
+.dashboard-toolbar span {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1.5px;
+}
+
+.dashboard-icon {
+  font-size: 42px;
+  margin-right: 16px;
+  color: white;
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +35,7 @@
 
 .card {
   width: 300px;
-  padding: 40px;
+  padding: 30px;
   color: #fff;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -32,7 +59,33 @@
   background: linear-gradient(135deg, #00b09b, #96c93d);
 }
 
+.card4 {
+  background: linear-gradient(135deg, #637775, #37ade4);
+}
+
 mat-icon {
   font-size: 40px;
   margin-bottom: 10px;
+}
+
+/* Responsive for small devices */
+@media (max-width: 768px) {
+  .dashboard-toolbar {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  .dashboard-icon {
+    margin-bottom: 10px;
+  }
+
+  .dashboard-toolbar span {
+    font-size: 26px;
+  }
+
+  .card {
+    width: 90%;
+  }
 }

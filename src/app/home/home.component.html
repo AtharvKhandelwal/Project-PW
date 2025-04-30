@@ -1,7 +1,12 @@
-<mat-toolbar color="primary">
-  <span>Document Converter Dashboard</span>
-</mat-toolbar>
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+  <mat-toolbar class="dashboard-toolbar" color="primary">
+    <mat-icon class="dashboard-icon">dashboard</mat-icon>
+    <span class="dashboard-title">Document Converter Dashboard</span>
+  </mat-toolbar>
+</div>
 
+<!-- Cards Section (Unchanged, already good) -->
 <div class="card-grid">
   <mat-card class="card card1" (click)="navigateTo('pdftopowerpoint')">
     <mat-icon>picture_as_pdf</mat-icon>
@@ -19,5 +24,11 @@
     <mat-icon>description</mat-icon>
     <h3>Word to PDF</h3>
     <p>Transform DOCX files into PDFs effortlessly.</p>
+  </mat-card>
+
+  <mat-card class="card card4" (click)="navigateTo('pdftojpg')">
+    <mat-icon>image</mat-icon>
+    <h3>PDF to JPG</h3>
+    <p>Convert PDF pages into high-resolution JPG images.</p>
   </mat-card>
 </div>
