@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectorRef} from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../user.service';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,7 +15,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [  CommonModule,
+  imports: [  RouterModule,
+              CommonModule,
               ReactiveFormsModule,
               MatCardModule,
               MatFormFieldModule,
@@ -29,8 +30,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
   hidePassword = true;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -42,7 +43,7 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-  }  
+  }
 
   get f() {
     return this.loginForm.controls;
@@ -51,27 +52,15 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const formValue = this.loginForm.value;
-      const user = {
-        email: formValue.email,
-        password: formValue.password
-      };
 
       this.userService.login(formValue).subscribe({
-        next: (response:any) => {
-          localStorage.setItem('token', response.token); // <-- Save JWT
-          localStorage.setItem('username', response.user.userName); // (optional)
-          console.log('Login Successful', response);
-          this.snackBar.open('Login Successful!', 'Close', {
-            duration: 5000,
-          });
-          this.cdr.detectChanges();
-          this.router.navigate(['/home']);  // Navigate to login after signup
+        next: (response: any) => {
+          this.snackBar.open('Login Successful!', 'Close', { duration: 5000 });
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           alert('Error: ' + err.error);
-          this.snackBar.open('Failed Login!', 'Close', {
-            duration: 5000,
-          });
+          this.snackBar.open('Failed Login!', 'Close', { duration: 5000 });
         }
       });
     } else {

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';  // Ensure you have the correct path for AuthService
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../user.service';  // Ensure you have the correct path for AuthService
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +15,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ ReactiveFormsModule,
+  imports: [ RouterModule,
+             ReactiveFormsModule,
              CommonModule,
              MatCardModule,
              MatFormFieldModule,

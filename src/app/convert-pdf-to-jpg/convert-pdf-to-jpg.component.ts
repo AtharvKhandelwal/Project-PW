@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { UserService } from '../../user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-convert-pdf-to-powerpoint',
+  selector: 'app-convert-pdf-to-jpg',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './convert-pdf-to-powerpoint.component.html',
-  styleUrl: './convert-pdf-to-powerpoint.component.css'
+  templateUrl: './convert-pdf-to-jpg.component.html',
+  styleUrl: './convert-pdf-to-jpg.component.css'
 })
-export class ConvertPdfToPowerpointComponent {
+
+export class PdfToJpgComponent {
   selectedFile: File | null = null;
   loading = false;
-  errorMessage: string | null = null;
+  errorMessage = '';
   convertedFileUrl: string | null = null;
-  convertedFileName: string | null = null;
+  convertedFileName = '';
 
   constructor(private userService: UserService) {}
 
@@ -22,23 +23,28 @@ export class ConvertPdfToPowerpointComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
-      this.errorMessage = null;
+      this.errorMessage = '';
+      this.convertedFileUrl = null;
     }
   }
 
-  convertPdfToPpt(): void {
+  convertPdfToJpg(): void {
+    
+    this.loading = true;
+    this.errorMessage = '';
+    this.convertedFileUrl = null;
+    
     if (!this.selectedFile) {
       this.errorMessage = 'Please select a PDF file.';
       return;
     }
 
-    this.loading = true;
-
-    this.userService.convertPdfToPpt(this.selectedFile).subscribe({
-      next: (response) => {
-        const blob = response;
-        this.convertedFileUrl = window.URL.createObjectURL(blob);
-        this.convertedFileName = 'converted.pptx';
+    this.userService.convertPdfToJpg(this.selectedFile).subscribe({
+      next: (blob) => {
+        const type = blob.type;
+        const extension = type === 'application/zip' ? 'zip' : 'jpg';
+        this.convertedFileName = `converted.${extension}`;
+        this.convertedFileUrl = URL.createObjectURL(blob);
         this.loading = false;
       },
       error: (err) => {
